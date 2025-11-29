@@ -1,0 +1,2407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Michael's High School - Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #006400;
+            --secondary: #FFD700;
+            --accent: #8B0000;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #004d00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e6c200;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-contact span {
+            margin-right: 20px;
+        }
+
+        .top-bar-contact i {
+            margin-right: 5px;
+        }
+
+        .top-bar-social i {
+            margin-left: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .top-bar-social i:hover {
+            color: var(--secondary);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--dark);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light);
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        .dropdown > a::after {
+            content: '\f107';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: slideUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .slide-buttons {
+            animation: slideUp 1s ease 0.4s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .slider-arrow.prev {
+            left: 20px;
+        }
+
+        .slider-arrow.next {
+            right: 20px;
+        }
+
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Academics Section */
+        .academics {
+            background: var(--light);
+        }
+
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .academic-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .academic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .academic-icon {
+            background: var(--primary);
+            color: white;
+            font-size: 2rem;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .academic-content {
+            padding: 25px;
+        }
+
+        .academic-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .academic-content p {
+            color: #555;
+        }
+
+        /* Subpage Styles */
+        .subpage-nav {
+            background: var(--light);
+            padding: 20px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .subpage-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .subpage-nav a {
+            padding: 10px 20px;
+            background: white;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .subpage-nav a:hover, .subpage-nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .subpage-content {
+            display: none;
+        }
+
+        .subpage-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0,100,0,0.1);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            background: #1a1a1a;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #444;
+        }
+
+        /* Portal Section */
+        .portal {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .portal h2 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .portal p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .portal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Kenyan Flag Element */
+        .kenyan-flag {
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(to bottom, 
+                black 0%, black 33.33%, 
+                red 33.33%, red 66.66%, 
+                green 66.66%, green 100%);
+            margin-right: 8px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .kenyan-flag::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 45%, white 45%, white 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, white 45%, white 55%, transparent 55%);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-slider {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                z-index: 1000;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: #f8f9fa;
+                width: 100%;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-slider {
+                height: 400px;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .top-bar-contact span {
+                display: block;
+                margin: 5px 0;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-slider {
+                height: 350px;
+            }
+            
+            .subpage-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .subpage-nav a {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .portal-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-contact">
+                <span><i class="fas fa-phone"></i> +254 712 345 678</span>
+                <span><i class="fas fa-envelope"></i> info@stmichaels.sc.ke</span>
+                <span><span class="kenyan-flag"></span>Proudly Kenyan</span>
+            </div>
+            <div class="top-bar-social">
+                <span>Follow us:</span>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="main-header">
+                <div class="logo">
+                    <div class="logo-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>St. Michael's High School</h1>
+                        <p>Striving for Excellence in Education | Elimu Bora Kwa Maendeleo</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul id="main-menu">
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link" data-page="about">About Us</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="overview">Overview & FAQs</a></li>
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="history">Our School History</a></li>
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="bom">Our BOM and PA</a></li>
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="service">Service Character</a></li>
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="gallery">School Gallery</a></li>
+                                <li><a href="#" class="sub-nav" data-page="about" data-subpage="alumni">Alumni Community</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link" data-page="academics">Academics</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="sub-nav" data-page="academics" data-subpage="departments">Departments Overview</a></li>
+                                <li><a href="#" class="sub-nav" data-page="academics" data-subpage="teachers">Our Teachers</a></li>
+                                <li><a href="#" class="sub-nav" data-page="academics" data-subpage="results">KCSE Results</a></li>
+                                <li><a href="#" class="sub-nav" data-page="academics" data-subpage="timetable">KCSE Timetable</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link" data-page="cbe">CBE Curriculum</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="pathways">CBE Pathways Offered</a></li>
+                                <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="admission">Admission Process</a></li>
+                                <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="fees">Fees Structure</a></li>
+                                <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="student-life">Student Life</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link" data-page="news">News & Updates</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="sub-nav" data-page="news" data-subpage="events">Upcoming Events</a></li>
+                                <li><a href="#" class="sub-nav" data-page="news" data-subpage="articles">News & Articles</a></li>
+                                <li><a href="#" class="sub-nav" data-page="news" data-subpage="tenders">Tenders</a></li>
+                                <li><a href="#" class="sub-nav" data-page="news" data-subpage="jobs">Job Vacancies</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                    </ul>
+                    <div class="mobile-menu" id="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page Content -->
+    <div id="home" class="page-content active">
+        <!-- Hero Slider -->
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1593114970899-95c26e8d8841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="slide-content">
+                        <h2>Welcome to St. Michael's High School</h2>
+                        <p>Nurturing future leaders through quality education, discipline, and moral values since 1975.</p>
+                        <div class="slide-buttons">
+                            <a href="#" class="btn nav-link" data-page="cbe" data-subpage="admission">Apply Now</a>
+                            <a href="#" class="btn btn-secondary nav-link" data-page="about" data-subpage="overview">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="slide-content">
+                        <h2>Excellence in Academics</h2>
+                        <p>Consistently ranked among the top schools in the county with outstanding KCSE results.</p>
+                        <div class="slide-buttons">
+                            <a href="#" class="btn nav-link" data-page="academics" data-subpage="results">View Results</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    <div class="slide-content">
+                        <h2>Vibrant Student Life</h2>
+                        <p>Engage in sports, clubs, and various extracurricular activities that develop well-rounded individuals.</p>
+                        <div class="slide-buttons">
+                            <a href="#" class="btn nav-link" data-page="cbe" data-subpage="student-life">Student Life</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');">
+                    <div class="slide-content">
+                        <h2>Modern CBE Curriculum</h2>
+                        <p>Preparing students for the future with Competency-Based Education pathways.</p>
+                        <div class="slide-buttons">
+                            <a href="#" class="btn nav-link" data-page="cbe" data-subpage="pathways">Explore CBE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about-preview">
+            <div class="container">
+                <h2 class="section-title">About Our School</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our History & Mission</h3>
+                        <p>Founded in 1975, St. Michael's High School has been at the forefront of providing quality education in Kenya. We are committed to nurturing well-rounded individuals who excel academically, socially, and spiritually.</p>
+                        <p>Our mission is to provide a holistic education that empowers students to achieve their full potential and become responsible citizens who contribute positively to society.</p>
+                        <p>With a student population of over 1,200 and a dedicated staff of 85 teachers, we maintain a conducive learning environment that fosters academic excellence and character development.</p>
+                        <a href="#" class="btn nav-link" data-page="about" data-subpage="overview">Read More</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="St. Michael's High School Campus">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academics Section -->
+        <section class="section academics" id="academics-preview">
+            <div class="container">
+                <h2 class="section-title">Our Academics</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>8-4-4 Curriculum</h3>
+                            <p>We follow the Kenyan 8-4-4 curriculum, offering a wide range of subjects tailored to students' abilities and career aspirations.</p>
+                            <a href="#" class="nav-link" data-page="academics" data-subpage="departments">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Science & Technology</h3>
+                            <p>Our well-equipped laboratories and computer labs provide hands-on experience in sciences and technology subjects.</p>
+                            <a href="#" class="nav-link" data-page="academics" data-subpage="departments">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>KCSE Performance</h3>
+                            <p>Consistently ranked among the top schools in the county, with a mean score of 9.2 in the 2022 KCSE examinations.</p>
+                            <a href="#" class="nav-link" data-page="academics" data-subpage="results">View Results</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section" id="news-preview">
+            <div class="container">
+                <h2 class="section-title">News & Events</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Annual Sports Day Results</h3>
+                            <p>Our students showcased exceptional talent during the annual sports day competition held last Friday.</p>
+                            <a href="#" class="nav-link" data-page="news" data-subpage="articles">Read More</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Science Club Wins Regional Fair</h3>
+                            <p>Our science club emerged winners in the regional science fair with their innovative water purification project.</p>
+                            <a href="#" class="nav-link" data-page="news" data-subpage="articles">Read More</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Class of 2023 Graduation</h3>
+                            <p>We celebrated the achievements of our Form Four class during a colorful graduation ceremony.</p>
+                            <a href="#" class="nav-link" data-page="news" data-subpage="articles">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portal Section -->
+        <section class="section portal">
+            <div class="container">
+                <h2>Student & Parent Portal</h2>
+                <p>Access academic results, fee statements, timetables, and other important information through our secure online portal.</p>
+                <div class="portal-buttons">
+                    <a href="#" class="btn btn-secondary">Student Login</a>
+                    <a href="#" class="btn btn-secondary">Parent Login</a>
+                    <a href="#" class="btn">Staff Login</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Us Page Content -->
+    <div id="about" class="page-content">
+        <div class="subpage-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="sub-nav active" data-page="about" data-subpage="overview">Overview & FAQs</a></li>
+                    <li><a href="#" class="sub-nav" data-page="about" data-subpage="history">Our School History</a></li>
+                    <li><a href="#" class="sub-nav" data-page="about" data-subpage="bom">Our BOM and PA</a></li>
+                    <li><a href="#" class="sub-nav" data-page="about" data-subpage="service">Service Character</a></li>
+                    <li><a href="#" class="sub-nav" data-page="about" data-subpage="gallery">School Gallery</a></li>
+                    <li><a href="#" class="sub-nav" data-page="about" data-subpage="alumni">Alumni Community</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Overview & FAQs -->
+            <div id="overview" class="subpage-content active">
+                <h2 class="section-title">Overview & FAQs</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>School Overview</h3>
+                        <p>St. Michael's High School is a premier educational institution located in the heart of Kenya. We offer both the 8-4-4 curriculum and the new Competency-Based Curriculum (CBC) to cater to the diverse needs of our students.</p>
+                        <p>Our school is committed to providing a holistic education that balances academic excellence with character development, preparing students for success in their future endeavors.</p>
+                        
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What are the school hours?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>School runs from 8:00 AM to 4:00 PM from Monday to Friday. Extra-curricular activities may extend beyond these hours.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Does the school offer boarding facilities?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, we have both day and boarding options for students. Our boarding facilities are modern and well-maintained.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What is the student-teacher ratio?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We maintain a ratio of 1 teacher for every 25 students to ensure personalized attention.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1593114970899-95c26e8d8841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Overview">
+                    </div>
+                </div>
+            </div>
+
+            <!-- School History -->
+            <div id="history" class="subpage-content">
+                <h2 class="section-title">Our School History</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Established in 1975</h3>
+                        <p>St. Michael's High School was founded in 1975 with the vision of providing quality education to the local community. What started as a small institution with just 50 students has grown into one of the most respected schools in the region.</p>
+                        <p>Over the years, we have expanded our facilities, curriculum, and teaching staff to meet the evolving needs of education in Kenya.</p>
+                        
+                        <h3>Key Milestones</h3>
+                        <ul>
+                            <li><strong>1975:</strong> School established with 50 students and 5 teachers</li>
+                            <li><strong>1985:</strong> Science laboratories constructed</li>
+                            <li><strong>1995:</strong> Library and computer lab added</li>
+                            <li><strong>2005:</strong> New administration block completed</li>
+                            <li><strong>2015:</strong> Introduction of the Competency-Based Curriculum</li>
+                            <li><strong>2020:</strong> Digital learning platform implemented</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="School History">
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOM and PA -->
+            <div id="bom" class="subpage-content">
+                <h2 class="section-title">Our Board of Management & Parents Association</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Board of Management</h3>
+                        <p>Our Board of Management consists of dedicated professionals who provide strategic direction and oversight for the school. They ensure that we maintain high standards of education and accountability.</p>
+                        
+                        <h4>Board Members</h4>
+                        <ul>
+                            <li>Mr. John Kamau - Chairperson</li>
+                            <li>Mrs. Grace Wanjiku - Vice Chairperson</li>
+                            <li>Dr. Samuel Otieno - Secretary</li>
+                            <li>Ms. Elizabeth Muthoni - Treasurer</li>
+                            <li>Rev. Peter Maina - Member</li>
+                            <li>Mrs. Sarah Achieng - Member</li>
+                        </ul>
+                        
+                        <h3>Parents Association</h3>
+                        <p>The Parents Association works collaboratively with the school administration to support various initiatives and ensure the welfare of our students.</p>
+                        
+                        <h4>Executive Committee</h4>
+                        <ul>
+                            <li>Mr. David Ochieng - Chairperson</li>
+                            <li>Mrs. Maryanne Kariuki - Vice Chairperson</li>
+                            <li>Mr. James Mutua - Secretary</li>
+                            <li>Mrs. Faith Njeri - Treasurer</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Board Meeting">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Character -->
+            <div id="service" class="subpage-content">
+                <h2 class="section-title">Service Character</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Commitment to Service</h3>
+                        <p>At St. Michael's High School, we believe in instilling a strong sense of service and community responsibility in our students. We encourage them to become active citizens who contribute positively to society.</p>
+                        
+                        <h3>Community Outreach Programs</h3>
+                        <ul>
+                            <li><strong>Environmental Conservation:</strong> Students participate in tree planting and clean-up activities in the local community.</li>
+                            <li><strong>Elderly Support:</strong> Regular visits to local elderly care homes to provide companionship and assistance.</li>
+                            <li><strong>Educational Support:</strong> Tutoring programs for primary school students in the surrounding areas.</li>
+                            <li><strong>Health Awareness:</strong> Campaigns on important health issues affecting our community.</li>
+                        </ul>
+                        
+                        <h3>Character Development</h3>
+                        <p>We focus on developing key character traits in our students including integrity, responsibility, respect, and empathy through various programs and activities.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Community Service">
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Gallery -->
+            <div id="gallery" class="subpage-content">
+                <h2 class="section-title">School Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1593114970899-95c26e8d8841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Classroom">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sports">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Science Lab">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Library">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Campus">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Students">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Community -->
+            <div id="alumni" class="subpage-content">
+                <h2 class="section-title">Alumni Community</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Connecting Past and Present</h3>
+                        <p>Our alumni network is a vibrant community of successful individuals who continue to make significant contributions in various fields both in Kenya and internationally.</p>
+                        
+                        <h3>Notable Alumni</h3>
+                        <ul>
+                            <li><strong>Dr. Jane Mwangi</strong> - Renowned Medical Researcher</li>
+                            <li><strong>Mr. Samuel Kariuki</strong> - CEO of a leading tech company</li>
+                            <li><strong>Prof. Michael Odhiambo</strong> - University Chancellor</li>
+                            <li><strong>Ms. Grace Wambui</strong> - Award-winning Author</li>
+                            <li><strong>Eng. David Njoroge</strong> - Infrastructure Development Expert</li>
+                        </ul>
+                        
+                        <h3>Alumni Events</h3>
+                        <p>We organize regular alumni events including reunions, mentorship programs, and career talks to keep our former students connected to the school community.</p>
+                        
+                        <a href="#" class="btn">Join Alumni Network</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Alumni Gathering">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academics Page Content -->
+    <div id="academics" class="page-content">
+        <div class="subpage-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="sub-nav active" data-page="academics" data-subpage="departments">Departments Overview</a></li>
+                    <li><a href="#" class="sub-nav" data-page="academics" data-subpage="teachers">Our Teachers</a></li>
+                    <li><a href="#" class="sub-nav" data-page="academics" data-subpage="results">KCSE Results</a></li>
+                    <li><a href="#" class="sub-nav" data-page="academics" data-subpage="timetable">KCSE Timetable</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Departments Overview -->
+            <div id="departments" class="subpage-content active">
+                <h2 class="section-title">Departments Overview</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Sciences Department</h3>
+                            <p>Offering Biology, Chemistry, Physics and Computer Studies with well-equipped laboratories for practical learning.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Mathematics Department</h3>
+                            <p>Comprehensive mathematics curriculum with specialized support for students at all levels.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Languages Department</h3>
+                            <p>English, Kiswahili, French and German language instruction with emphasis on communication skills.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Humanities Department</h3>
+                            <p>History, Geography, CRE and IRE subjects that develop critical thinking and cultural awareness.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Business Studies</h3>
+                            <p>Commerce, Accounting and Business Studies preparing students for careers in business and entrepreneurship.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Creative Arts</h3>
+                            <p>Music, Art and Design programs that nurture creativity and artistic expression.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Teachers -->
+            <div id="teachers" class="subpage-content">
+                <h2 class="section-title">Our Teachers</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Mr. John Maina</h3>
+                            <p>Head of Sciences Department with 15 years of teaching experience. M.Sc. in Chemistry.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Mrs. Grace Wanjiru</h3>
+                            <p>Head of Mathematics Department. B.Ed. Mathematics with distinction.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Mr. David Omondi</h3>
+                            <p>Head of Languages Department. MA in Literature with 12 years experience.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Mrs. Sarah Atieno</h3>
+                            <p>Head of Humanities. Specialized in History and Geography education.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KCSE Results -->
+            <div id="results" class="subpage-content">
+                <h2 class="section-title">KCSE Results</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Performance Overview</h3>
+                        <p>St. Michael's High School has consistently maintained excellent performance in the Kenya Certificate of Secondary Education (KCSE) examinations.</p>
+                        
+                        <h3>2022 KCSE Results</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Mean Score</th>
+                                        <th>University Qualifiers</th>
+                                        <th>National Ranking</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2022</td>
+                                        <td>9.2</td>
+                                        <td>95%</td>
+                                        <td>Top 5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021</td>
+                                        <td>8.9</td>
+                                        <td>92%</td>
+                                        <td>Top 7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2020</td>
+                                        <td>8.7</td>
+                                        <td>90%</td>
+                                        <td>Top 8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019</td>
+                                        <td>8.5</td>
+                                        <td>88%</td>
+                                        <td>Top 10%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h3>Subject Performance</h3>
+                        <p>Our students have consistently excelled in Mathematics, Sciences, and Languages, with many scoring straight A's in these subjects.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1593114970899-95c26e8d8841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Academic Excellence">
+                    </div>
+                </div>
+            </div>
+
+            <!-- KCSE Timetable -->
+            <div id="timetable" class="subpage-content">
+                <h2 class="section-title">KCSE Timetable</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>2023 KCSE Examination Schedule</h3>
+                        <p>The Kenya National Examinations Council (KNEC) has released the following timetable for the 2023 KCSE examinations.</p>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Subject</th>
+                                        <th>Paper</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Oct 23, 2023</td>
+                                        <td>8:00 AM - 10:00 AM</td>
+                                        <td>English</td>
+                                        <td>Paper 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 23, 2023</td>
+                                        <td>11:00 AM - 1:00 PM</td>
+                                        <td>English</td>
+                                        <td>Paper 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 24, 2023</td>
+                                        <td>8:00 AM - 10:00 AM</td>
+                                        <td>Mathematics</td>
+                                        <td>Paper 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 24, 2023</td>
+                                        <td>11:00 AM - 1:00 PM</td>
+                                        <td>Mathematics</td>
+                                        <td>Paper 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 25, 2023</td>
+                                        <td>8:00 AM - 10:30 AM</td>
+                                        <td>Chemistry</td>
+                                        <td>Paper 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 25, 2023</td>
+                                        <td>11:00 AM - 1:00 PM</td>
+                                        <td>Chemistry</td>
+                                        <td>Paper 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 26, 2023</td>
+                                        <td>8:00 AM - 10:00 AM</td>
+                                        <td>Kiswahili</td>
+                                        <td>Paper 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 26, 2023</td>
+                                        <td>11:00 AM - 1:00 PM</td>
+                                        <td>Kiswahili</td>
+                                        <td>Paper 2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p><strong>Note:</strong> This is a partial timetable. The complete timetable will be provided to students and parents at the beginning of the third term.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Examination Preparation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CBE Curriculum Page Content -->
+    <div id="cbe" class="page-content">
+        <div class="subpage-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="sub-nav active" data-page="cbe" data-subpage="pathways">CBE Pathways Offered</a></li>
+                    <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="admission">Admission Process</a></li>
+                    <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="fees">Fees Structure</a></li>
+                    <li><a href="#" class="sub-nav" data-page="cbe" data-subpage="student-life">Student Life</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- CBE Pathways Offered -->
+            <div id="pathways" class="subpage-content active">
+                <h2 class="section-title">CBE Pathways Offered</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Competency-Based Education</h3>
+                        <p>St. Michael's High School has fully embraced the Competency-Based Curriculum (CBC) to prepare students for the dynamic demands of the 21st century.</p>
+                        
+                        <h3>Pathways Available</h3>
+                        <ul>
+                            <li><strong>Science, Technology, Engineering and Mathematics (STEM):</strong> For students interested in careers in sciences, technology, engineering and mathematics.</li>
+                            <li><strong>Social Sciences:</strong> For students interested in law, arts, humanities and social sciences.</li>
+                            <li><strong>Arts and Sports Science:</strong> For students with talents in creative arts, sports and related fields.</li>
+                            <li><strong>Technical and Vocational Education and Training (TVET):</strong> For students interested in technical skills and vocational training.</li>
+                        </ul>
+                        
+                        <h3>Our Approach</h3>
+                        <p>We focus on developing competencies rather than just content knowledge, ensuring our students are well-prepared for higher education and the world of work.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="CBE Learning">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admission Process -->
+            <div id="admission" class="subpage-content">
+                <h2 class="section-title">Admission Process</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>How to Apply</h3>
+                        <p>We welcome applications from students who demonstrate academic potential and a commitment to our school values. Our admission process is designed to identify students who will thrive in our learning environment.</p>
+                        
+                        <h3>Admission Requirements</h3>
+                        <ul>
+                            <li>Completed application form</li>
+                            <li>Copy of birth certificate</li>
+                            <li>Copy of KCPE results slip</li>
+                            <li>Two recent passport-sized photographs</li>
+                            <li>Previous school report cards (if applicable)</li>
+                        </ul>
+                        
+                        <h3>Application Timeline</h3>
+                        <p>Applications for Form One intake are accepted between January and March each year. Entrance exams are typically held in April, with results released in May.</p>
+                        
+                        <a href="#" class="btn">Download Application Form</a>
+                        <a href="#" class="btn btn-secondary">Apply Online</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1593114970899-95c26e8d8841?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Admissions">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fees Structure -->
+            <div id="fees" class="subpage-content">
+                <h2 class="section-title">Fees Structure</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>2023 School Fees</h3>
+                        <p>Our fee structure is designed to be affordable while maintaining the high quality of education we are known for.</p>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Day Scholars</th>
+                                        <th>Boarders</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tuition Fee</td>
+                                        <td>KSh 25,000</td>
+                                        <td>KSh 35,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Activity Fee</td>
+                                        <td>KSh 5,000</td>
+                                        <td>KSh 5,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Medical Fee</td>
+                                        <td>KSh 2,000</td>
+                                        <td>KSh 3,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Boarding Fee</td>
+                                        <td>-</td>
+                                        <td>KSh 20,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total per Term</strong></td>
+                                        <td><strong>KSh 32,000</strong></td>
+                                        <td><strong>KSh 63,000</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h3>Payment Information</h3>
+                        <p>Fees are payable in three installments at the beginning of each term. We accept payments through bank transfer, M-Pesa, and direct deposit at the school accounts office.</p>
+                        
+                        <p><strong>Bank Details:</strong><br>
+                        Bank: Kenya Commercial Bank<br>
+                        Account Name: St. Michael's High School<br>
+                        Account Number: 0123456789<br>
+                        Branch: Nairobi Main Branch</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="School Facilities">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Life -->
+            <div id="student-life" class="subpage-content">
+                <h2 class="section-title">Student Life</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>A Vibrant Learning Community</h3>
+                        <p>At St. Michael's High School, we believe in holistic education that goes beyond the classroom. Our students enjoy a rich and diverse school life with numerous opportunities for growth and development.</p>
+                        
+                        <h3>Clubs and Societies</h3>
+                        <ul>
+                            <li><strong>Science Club:</strong> For students interested in scientific research and innovation</li>
+                            <li><strong>Debate Club:</strong> Developing public speaking and critical thinking skills</li>
+                            <li><strong>Drama Club:</strong> Exploring creativity through theater and performance</li>
+                            <li><strong>Environmental Club:</strong> Promoting environmental conservation awareness</li>
+                            <li><strong>Music Club:</strong> For students with musical talents</li>
+                            <li><strong>Sports Teams:</strong> Football, basketball, volleyball, athletics and more</li>
+                        </ul>
+                        
+                        <h3>Leadership Opportunities</h3>
+                        <p>Students have opportunities to develop leadership skills through positions in student government, club leadership, and peer mentoring programs.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Student Activities">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News & Updates Page Content -->
+    <div id="news" class="page-content">
+        <div class="subpage-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="sub-nav active" data-page="news" data-subpage="events">Upcoming Events</a></li>
+                    <li><a href="#" class="sub-nav" data-page="news" data-subpage="articles">News & Articles</a></li>
+                    <li><a href="#" class="sub-nav" data-page="news" data-subpage="tenders">Tenders</a></li>
+                    <li><a href="#" class="sub-nav" data-page="news" data-subpage="jobs">Job Vacancies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Upcoming Events -->
+            <div id="events" class="subpage-content active">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Annual Inter-House Competition</h3>
+                            <p><strong>Date:</strong> July 15, 2023</p>
+                            <p>Our annual inter-house sports competition will be held on July 15th. All parents and guardians are invited to attend.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Science & Technology Fair</h3>
+                            <p><strong>Date:</strong> August 5, 2023</p>
+                            <p>Our annual Science and Technology Fair will showcase innovative projects from our students. Guest judges from local universities will be in attendance.</p>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Form Four Graduation</h3>
+                            <p><strong>Date:</strong> October 20, 2023</p>
+                            <p>The graduation ceremony for the Class of 2023 will be held on October 20th. We look forward to celebrating their achievements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News & Articles -->
+            <div id="articles" class="subpage-content">
+                <h2 class="section-title">News & Articles</h2>
+                <div class="academics-grid">
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Annual Sports Day Results</h3>
+                            <p><strong>Date:</strong> June 15, 2023</p>
+                            <p>Our students showcased exceptional talent during the annual sports day competition held last Friday.</p>
+                            <a href="#">Read Full Article</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Science Club Wins Regional Fair</h3>
+                            <p><strong>Date:</strong> May 28, 2023</p>
+                            <p>Our science club emerged winners in the regional science fair with their innovative water purification project.</p>
+                            <a href="#">Read Full Article</a>
+                        </div>
+                    </div>
+                    <div class="academic-card">
+                        <div class="academic-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="academic-content">
+                            <h3>Class of 2023 Graduation Ceremony</h3>
+                            <p><strong>Date:</strong> April 10, 2023</p>
+                            <p>We celebrated the achievements of our Form Four class during a colorful graduation ceremony.</p>
+                            <a href="#">Read Full Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tenders -->
+            <div id="tenders" class="subpage-content">
+                <h2 class="section-title">Tenders</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Current Tenders</h3>
+                        <p>St. Michael's High School invites qualified and interested contractors/suppliers to submit bids for the following tenders:</p>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tender No.</th>
+                                        <th>Description</th>
+                                        <th>Closing Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SMHS/001/2023</td>
+                                        <td>Supply of Laboratory Equipment</td>
+                                        <td>July 30, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SMHS/002/2023</td>
+                                        <td>Construction of New Classroom Block</td>
+                                        <td>August 15, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SMHS/003/2023</td>
+                                        <td>Supply of Library Books</td>
+                                        <td>July 25, 2023</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h3>Tender Documents</h3>
+                        <p>Tender documents can be obtained from the school's accounts office upon payment of a non-refundable fee of KSh 1,000.</p>
+                        
+                        <p>For more information, contact the Procurement Office at procurement@stmichaels.sc.ke or call +254 712 345 678.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="School Infrastructure">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Vacancies -->
+            <div id="jobs" class="subpage-content">
+                <h2 class="section-title">Job Vacancies</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Current Openings</h3>
+                        <p>St. Michael's High School is seeking qualified and dedicated professionals to join our team in the following positions:</p>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Department</th>
+                                        <th>Application Deadline</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mathematics Teacher</td>
+                                        <td>Mathematics</td>
+                                        <td>July 31, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Physics Teacher</td>
+                                        <td>Sciences</td>
+                                        <td>July 31, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>School Counselor</td>
+                                        <td>Guidance & Counseling</td>
+                                        <td>August 15, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ICT Lab Technician</td>
+                                        <td>ICT</td>
+                                        <td>August 10, 2023</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h3>Application Process</h3>
+                        <p>Interested candidates should submit their applications including a cover letter, detailed CV, copies of academic and professional certificates, and three referees to:</p>
+                        
+                        <p>The Principal<br>
+                        St. Michael's High School<br>
+                        P.O. Box 123-456<br>
+                        Nairobi, Kenya<br>
+                        Email: recruitment@stmichaels.sc.ke</p>
+                        
+                        <p>Only shortlisted candidates will be contacted.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Staff">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Page Content -->
+    <div id="contact" class="page-content">
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>P.O. Box 123-456,<br>Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+254 712 345 678<br>+254 734 567 890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@stmichaels.sc.ke<br>admissions@stmichaels.sc.ke</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Office Hours</h4>
+                                <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="text" placeholder="Subject" required>
+                            <textarea placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Find Us</h3>
+                        <p>Our school is conveniently located in a serene environment conducive to learning. We welcome visitors during office hours for tours and inquiries.</p>
+                        <p><strong>Directions:</strong> From the city center, take the Thika Road and exit at Ruiru. Follow the signs to St. Michael's High School.</p>
+                    </div>
+                    <div class="about-image">
+                        <div style="height: 300px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <p>Interactive Map Would Appear Here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>St. Michael's High School</h3>
+                    <p>Striving for excellence in education since 1975. We are committed to nurturing future leaders through quality education, discipline, and moral values.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about" data-subpage="overview">About Us</a></li>
+                        <li><a href="#" class="nav-link" data-page="academics" data-subpage="departments">Academics</a></li>
+                        <li><a href="#" class="nav-link" data-page="cbe" data-subpage="pathways">CBE Curriculum</a></li>
+                        <li><a href="#" class="nav-link" data-page="news" data-subpage="events">News & Events</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Important Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Parent Portal</a></li>
+                        <li><a href="#">E-Learning</a></li>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="#" class="nav-link" data-page="cbe" data-subpage="fees">Fee Structure</a></li>
+                        <li><a href="#" class="nav-link" data-page="news" data-subpage="jobs">Career Opportunities</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updates on school events and important announcements.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 St. Michael's High School. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #8B0000;"></i> for Kenyan Education | Elimu Bora Kwa Maendeleo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            initializeNavigation();
+            initializeSlider();
+            initializeFAQ();
+            initializeContactForm();
+            
+            // Set home as default active page
+            setActivePage('home');
+        });
+
+        // Initialize navigation system
+        function initializeNavigation() {
+            // Mobile Menu Toggle
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#mobile-menu')) {
+                    document.getElementById('main-menu').classList.toggle('show');
+                }
+            });
+            
+            // Navigation link handling - using event delegation
+            document.addEventListener('click', function(e) {
+                const navLink = e.target.closest('.nav-link');
+                const subNav = e.target.closest('.sub-nav');
+                
+                if (navLink) {
+                    e.preventDefault();
+                    handleNavigation(navLink);
+                }
+                
+                if (subNav) {
+                    e.preventDefault();
+                    handleSubNavigation(subNav);
+                }
+            });
+            
+            // Handle dropdown menus on hover for desktop, click for mobile
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        this.querySelector('.dropdown-menu').style.display = 'block';
+                    }
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        this.querySelector('.dropdown-menu').style.display = 'none';
+                    }
+                });
+                
+                // For mobile, toggle dropdown on click
+                if (window.innerWidth <= 768) {
+                    dropdown.querySelector('> a').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const menu = this.nextElementSibling;
+                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    });
+                }
+            });
+        }
+
+        // Handle main navigation
+        function handleNavigation(link) {
+            const page = link.getAttribute('data-page');
+            const subpage = link.getAttribute('data-subpage') || getDefaultSubpage(page);
+            
+            setActivePage(page, subpage);
+            
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                document.getElementById('main-menu').classList.remove('show');
+            }
+        }
+
+        // Handle sub-navigation
+        function handleSubNavigation(link) {
+            const page = link.getAttribute('data-page');
+            const subpage = link.getAttribute('data-subpage');
+            
+            setActivePage(page, subpage);
+            
+            // Update active state in subpage navigation
+            document.querySelectorAll('.sub-nav').forEach(nav => {
+                nav.classList.remove('active');
+            });
+            link.classList.add('active');
+            
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                document.getElementById('main-menu').classList.remove('show');
+            }
+        }
+
+        // Set active page and subpage
+        function setActivePage(page, subpage = null) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(pageEl => {
+                pageEl.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(page);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Handle subpages if applicable
+            if (subpage && page !== 'home' && page !== 'contact') {
+                // Update subpage navigation active state
+                document.querySelectorAll('.sub-nav').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                
+                const activeSubNav = document.querySelector(`.sub-nav[data-page="${page}"][data-subpage="${subpage}"]`);
+                if (activeSubNav) {
+                    activeSubNav.classList.add('active');
+                }
+                
+                // Show the appropriate subpage content
+                document.querySelectorAll(`#${page} .subpage-content`).forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                const targetContent = document.getElementById(subpage);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Get default subpage for a main page
+        function getDefaultSubpage(page) {
+            const defaults = {
+                'about': 'overview',
+                'academics': 'departments',
+                'cbe': 'pathways',
+                'news': 'events'
+            };
+            
+            return defaults[page] || 'overview';
+        }
+
+        // Initialize hero slider
+        function initializeSlider() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.slider-arrow.prev');
+            const nextBtn = document.querySelector('.slider-arrow.next');
+            
+            if (slides.length === 0) return;
+            
+            let currentSlide = 0;
+            let slideInterval;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                if (dots[currentSlide]) {
+                    dots[currentSlide].classList.add('active');
+                }
+            }
+            
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            function startSlider() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function stopSlider() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners for slider controls
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopSlider();
+                    nextSlide();
+                    startSlider();
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopSlider();
+                    prevSlide();
+                    startSlider();
+                });
+            }
+            
+            if (dots.length > 0) {
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        stopSlider();
+                        showSlide(index);
+                        startSlider();
+                    });
+                });
+            }
+            
+            // Pause slider on hover
+            const slider = document.querySelector('.hero-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stopSlider);
+                slider.addEventListener('mouseleave', startSlider);
+            }
+            
+            // Initialize slider
+            startSlider();
+        }
+
+        // Initialize FAQ functionality
+        function initializeFAQ() {
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.faq-question')) {
+                    const faqItem = e.target.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                }
+            });
+        }
+
+        // Initialize contact form
+        function initializeContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+            
+            // Initialize newsletter form
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                });
+            }
+        }
+
+        // Handle window resize for responsive behavior
+        window.addEventListener('resize', function() {
+            // Reset dropdown displays on resize
+            const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            if (window.innerWidth > 768) {
+                dropdownMenus.forEach(menu => {
+                    menu.style.display = '';
+                });
+            } else {
+                dropdownMenus.forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

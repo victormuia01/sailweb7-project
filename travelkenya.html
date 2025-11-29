@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Kenya | Experience Africa's Premier Safari Destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B00;
+            --secondary: #006837;
+            --accent: #8E44AD;
+            --dark: #1A1A1A;
+            --light: #F8F8F8;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .slide-2 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .slide-3 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .search-widget {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Destinations Section */
+        .destinations {
+            background: var(--white);
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 400px;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .destination-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .destination-card:hover .destination-img {
+            transform: scale(1.1);
+        }
+
+        .destination-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .destination-card:hover .destination-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .destination-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .destination-info p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Packages Section */
+        .packages {
+            background: var(--light);
+        }
+
+        .package-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            background: var(--white);
+            border: none;
+            border-radius: 50px;
+            margin: 0 10px 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .package-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-img {
+            transform: scale(1.1);
+        }
+
+        .package-price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .package-body {
+            padding: 25px;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .package-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-features i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* Activities Section */
+        .activities {
+            background: var(--white);
+        }
+
+        .activity-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--light);
+            border: none;
+            border-radius: 50px;
+            margin: 0 8px 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .activity-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 250px;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .activity-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover .activity-overlay {
+            opacity: 1;
+        }
+
+        .activity-name {
+            color: var(--white);
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .testimonials h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--white);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: var(--light);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-body {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .blog-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Modal for detailed views */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            position: relative;
+            animation: modalFadeIn 0.5s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loader .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 107, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        /* Responsive Images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Image Fallback */
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.4rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .package-grid,
+            .destination-grid,
+            .activity-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Magical <span>Kenya</span></a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact" class="btn">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Discover The Magic of Kenya</h1>
+            <p>Experience breathtaking wildlife, pristine beaches, and vibrant cultures in Africa's premier safari destination.</p>
+            <a href="#destinations" class="btn">Explore Destinations</a>
+            
+            <div class="search-widget">
+                <div class="search-form">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <select id="destination">
+                            <option value="">Select Destination</option>
+                            <option value="masai-mara">Masai Mara</option>
+                            <option value="amboseli">Amboseli</option>
+                            <option value="tsavo">Tsavo</option>
+                            <option value="samburu">Samburu</option>
+                            <option value="diani">Diani Beach</option>
+                            <option value="nakuru">Lake Nakuru</option>
+                            <option value="kenya">Mount Kenya</option>
+                            <option value="lamu">Lamu Island</option>
+                            <option value="nairobi">Nairobi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-in">Check In</label>
+                        <input type="date" id="check-in">
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check Out</label>
+                        <input type="date" id="check-out">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn" style="margin-top: 25px;" id="searchBtn">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="section destinations" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Explore Kenya's most iconic wildlife reserves, national parks, and coastal paradises</p>
+            </div>
+            <div class="destination-filter">
+                <div class="activity-filter">
+                    <button class="filter-btn active" data-filter="all">All Destinations</button>
+                    <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                    <button class="filter-btn" data-filter="beach">Beach</button>
+                    <button class="filter-btn" data-filter="mountain">Mountain</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="lake">Lakes</button>
+                </div>
+            </div>
+            <div class="destination-grid" id="destinationGrid">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            <div class="loader" id="destinationLoader">
+                <div class="spinner"></div>
+                <p>Loading destinations...</p>
+            </div>
+            <div class="no-results" id="destinationNoResults">
+                <h3>No destinations found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section packages" id="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Travel Packages</h2>
+                <p>Choose from our carefully curated safari and beach holiday packages</p>
+            </div>
+            
+            <div class="package-tabs">
+                <button class="tab-btn active" data-filter="all">All Packages</button>
+                <button class="tab-btn" data-filter="safari">Safari</button>
+                <button class="tab-btn" data-filter="beach">Beach</button>
+                <button class="tab-btn" data-filter="cultural">Cultural</button>
+                <button class="tab-btn" data-filter="luxury">Luxury</button>
+                <button class="tab-btn" data-filter="adventure">Adventure</button>
+            </div>
+            
+            <div class="package-grid" id="packageGrid">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            <div class="loader" id="packageLoader">
+                <div class="spinner"></div>
+                <p>Loading packages...</p>
+            </div>
+            <div class="no-results" id="packageNoResults">
+                <h3>No packages found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="section activities" id="activities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Activities</h2>
+                <p>From thrilling wildlife encounters to relaxing beach days, Kenya offers endless adventures</p>
+            </div>
+            
+            <div class="activity-filter">
+                <button class="filter-btn active" data-filter="all">All Activities</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="adventure">Adventure</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="beach">Beach</button>
+                <button class="filter-btn" data-filter="hiking">Hiking</button>
+            </div>
+            
+            <div class="activity-grid" id="activityGrid">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            <div class="loader" id="activityLoader">
+                <div class="spinner"></div>
+                <p>Loading activities...</p>
+            </div>
+            <div class="no-results" id="activityNoResults">
+                <h3>No activities found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Travelers Say</h2>
+                <p>Read about unforgettable experiences from our satisfied customers</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">"Our safari in the Masai Mara exceeded all expectations. The guides were incredibly knowledgeable, and we saw all of the Big Five. The accommodations were luxurious, and the service was impeccable. Truly a trip of a lifetime!"</p>
+                    <p class="testimonial-author">Sarah Johnson</p>
+                    <p class="testimonial-role">Adventure Traveler</p>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"The combination of beach and safari was perfect. After the excitement of game drives, we relaxed on the stunning Diani Beach. The entire trip was seamlessly organized, and we felt well taken care of from start to finish."</p>
+                    <p class="testimonial-author">Michael & Emily Roberts</p>
+                    <p class="testimonial-role">Honeymooners</p>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"As a solo female traveler, I felt completely safe and well-guided throughout my Kenya trip. The cultural experiences with the Maasai community were authentic and respectful. I'll definitely be returning to explore more of Kenya!"</p>
+                    <p class="testimonial-author">Jessica Miller</p>
+                    <p class="testimonial-role">Solo Traveler</p>
+                </div>
+            </div>
+            
+            <div class="slider-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Travel Insights</h2>
+                <p>Get the latest tips, stories, and updates from our travel experts</p>
+            </div>
+            
+            <div class="blog-grid" id="blogGrid">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            <div class="loader" id="blogLoader">
+                <div class="spinner"></div>
+                <p>Loading blog posts...</p>
+            </div>
+            <div class="no-results" id="blogNoResults">
+                <h3>No blog posts found</h3>
+                <p>Check back later for new content.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Magical Kenya</h3>
+                    <p>Your gateway to unforgettable African adventures. We specialize in creating personalized safari and beach experiences that connect you with Kenya's incredible wildlife, cultures, and landscapes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Safari Lane, Nairobi, Kenya</p>
+                        <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                        <p><i class="fas fa-envelope"></i> info@magicalkenya.com</p>
+                        <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for travel tips, special offers, and Kenya updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 5px;">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Magical Kenya. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Destination Details</h2>
+            </div>
+            <img id="modalImage" src="" alt="" class="modal-img">
+            <div id="modalContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data models for dynamic content with working images
+        const destinationsData = [
+            {
+                id: 1,
+                name: "Masai Mara",
+                description: "Witness the Great Migration and encounter the Big Five in this world-famous reserve.",
+                image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "wildlife",
+                region: "Rift Valley",
+                bestTime: "July-October",
+                priceRange: "$$$",
+                details: "The Masai Mara National Reserve is one of Africa's greatest wildlife destinations. It's home to the Big Five (lion, leopard, elephant, buffalo, and rhino) and hosts the annual Great Migration where over 1.5 million wildebeest and zebras cross the Mara River. The reserve offers exceptional game viewing year-round with vast open plains dotted with acacia trees."
+            },
+            {
+                id: 2,
+                name: "Amboseli",
+                description: "See majestic elephants with the backdrop of Mount Kilimanjaro in this iconic park.",
+                image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "wildlife",
+                region: "Southern Kenya",
+                bestTime: "June-October",
+                priceRange: "$$",
+                details: "Amboseli National Park is famous for its large elephant herds and stunning views of Mount Kilimanjaro, Africa's highest peak. The park's ecosystem includes savannah, wetlands with sulfur springs, and woodlands. It's one of the best places in Africa to view large herds of elephants up close."
+            },
+            {
+                id: 3,
+                name: "Diani Beach",
+                description: "Relax on pristine white sands and swim in turquoise waters of the Indian Ocean.",
+                image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "beach",
+                region: "Coastal Kenya",
+                bestTime: "Year-round",
+                priceRange: "$$",
+                details: "Diani Beach is a stunning 17-kilometer stretch of white sand beach along the Indian Ocean. It's consistently voted one of Africa's best beaches with its crystal-clear turquoise waters, coral reefs, and swaying palm trees. The area offers excellent water sports, including snorkeling, diving, and kite surfing."
+            },
+            {
+                id: 4,
+                name: "Mount Kenya",
+                description: "Challenge yourself with a trek up Africa's second-highest mountain through diverse ecosystems.",
+                image: "https://www.graytonexpeditions.com/images/mount-kenya-national-park1.jpg",
+                category: "mountain",
+                region: "Central Kenya",
+                bestTime: "January-March, July-October",
+                priceRange: "$$$",
+                details: "Mount Kenya is Africa's second-highest mountain at 5,199 meters. It's an ancient extinct volcano with dramatic peaks and diverse ecosystems ranging from rainforest to alpine meadows and glaciers. The mountain offers various climbing routes for different skill levels, with Point Lenana being the most accessible summit for trekkers."
+            },
+            {
+                id: 5,
+                name: "Lamu Island",
+                description: "Step back in time in this UNESCO World Heritage site with rich Swahili culture and architecture.",
+                image: "https://observer-media.go-vip.net/wp-content/uploads/sites/2/2019/01/beach-front.jpg?quality=80&w=635",
+                category: "cultural",
+                region: "Coastal Kenya",
+                bestTime: "October-March",
+                priceRange: "$$",
+                details: "Lamu Old Town is Kenya's oldest continually inhabited settlement and a UNESCO World Heritage Site. The island has preserved its traditional Swahili architecture and way of life, with narrow streets, stone buildings, and ornate wooden doors. Donkeys are the primary mode of transport, and the island offers a peaceful escape from modern life."
+            },
+            {
+                id: 6,
+                name: "Samburu",
+                description: "Discover unique wildlife species and experience authentic cultural encounters with local tribes.",
+                image: "https://yellowzebrasafaris.com/media/26642/mount-ololokwe.jpg?width=2048&height=1024&format=jpg&v=1da5e1646214d50",
+                category: "wildlife",
+                region: "Northern Kenya",
+                bestTime: "June-October",
+                priceRange: "$$$",
+                details: "Samburu National Reserve is located in Kenya's remote northern frontier district. It's home to wildlife species not found in other Kenyan parks, including the reticulated giraffe, Grevy's zebra, Beisa oryx, and Somali ostrich. The Ewaso Ng'iro River flows through the reserve, providing a lifeline for wildlife in this arid region."
+            },
+            {
+                id: 7,
+                name: "Lake Nakuru",
+                description: "Famous for its flamingos and rhino sanctuary in the heart of the Great Rift Valley.",
+                image: "https://www.lakenakurukenya.com/wp-content/uploads/2020/02/kkkkkkk.jpg",
+                category: "lake",
+                region: "Rift Valley",
+                bestTime: "Year-round",
+                priceRange: "$$",
+                details: "Lake Nakuru National Park is famous for its huge flocks of flamingos that feed on algae in the lake's alkaline waters. The park is also home to both black and white rhinos in a protected sanctuary, as well as lions, leopards, and numerous bird species. The landscape features dramatic cliffs, waterfalls, and acacia woodlands."
+            },
+            {
+                id: 8,
+                name: "Tsavo National Park",
+                description: "Explore Kenya's largest national park with diverse landscapes and the famous red elephants.",
+                image: "https://www.aberdarenationalparks.com/wp-content/uploads/2024/01/Tsavo-East-National-Park-Destination-750x450.jpg",
+                category: "wildlife",
+                region: "Coastal Kenya",
+                bestTime: "June-October, January-February",
+                priceRange: "$$",
+                details: "Tsavo is Kenya's largest national park, divided into Tsavo East and Tsavo West. It's known for its dramatic landscapes including volcanic hills, lava flows, and the Mzima Springs. The park is home to the famous 'red elephants' that dust-bathe in the red soil, as well as large herds of buffalo, lions, and diverse birdlife."
+            },
+            {
+                id: 9,
+                name: "Hell's Gate National Park",
+                description: "Unique hiking and cycling safari experience through dramatic gorges and geothermal activity.",
+                image: "https://cdn.getyourguide.com/img/location/5a1d364ab5693.jpeg/99.jpg",
+                category: "adventure",
+                region: "Rift Valley",
+                bestTime: "Year-round",
+                priceRange: "$",
+                details: "Hell's Gate National Park is one of the few parks in Kenya where walking and cycling are permitted without a guide. The park features dramatic scenery with towering cliffs, deep gorges, and geothermal steam vents. It's also home to a variety of wildlife including zebras, giraffes, and over 100 bird species."
+            }
+        ];
+
+        const packagesData = [
+            {
+                id: 1,
+                name: "Classic Mara Safari",
+                description: "7-day luxury safari in the Masai Mara with premium accommodations and expert guides.",
+                price: 2499,
+                duration: "7 days",
+                category: ["safari", "luxury"],
+                image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                features: ["6 Nights Luxury Lodge", "Daily Game Drives", "All Meals Included", "Professional Guide"],
+                destinations: ["Masai Mara"],
+                season: "Year-round",
+                difficulty: "Easy",
+                details: "Our Classic Mara Safari offers an unparalleled wildlife experience in Kenya's most famous game reserve. You'll stay in luxury accommodations with all modern amenities while enjoying twice-daily game drives with our expert guides who have extensive knowledge of the local wildlife and ecosystems."
+            },
+            {
+                id: 2,
+                name: "Coastal Paradise",
+                description: "5-day beach retreat in Diani with water sports, spa treatments, and fine dining.",
+                price: 1899,
+                duration: "5 days",
+                category: ["beach", "luxury"],
+                image: "https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                features: ["4 Nights Beach Resort", "Snorkeling & Diving", "Spa Treatments", "Sunset Dhow Cruise"],
+                destinations: ["Diani Beach"],
+                season: "Year-round",
+                difficulty: "Easy",
+                details: "Escape to Kenya's stunning coastline with our Coastal Paradise package. You'll stay at a luxurious beachfront resort with direct access to Diani's famous white sand beaches. The package includes water sports activities, rejuvenating spa treatments, and romantic sunset dhow cruises along the coast."
+            },
+            {
+                id: 3,
+                name: "Maasai Cultural Safari",
+                description: "6-day immersive experience combining wildlife viewing with authentic cultural encounters.",
+                price: 1599,
+                duration: "6 days",
+                category: ["safari", "cultural"],
+                image: "https://www.explorerwandatours.com/wp-content/uploads/2024/11/be.jpg",
+                features: ["5 Nights Accommodation", "Maasai Village Visits", "Traditional Meals", "Guided Nature Walks"],
+                destinations: ["Masai Mara", "Amboseli"],
+                season: "Year-round",
+                difficulty: "Moderate",
+                details: "This unique safari combines wildlife viewing with authentic cultural experiences. You'll visit Maasai villages to learn about their traditional way of life, participate in cultural activities, and enjoy traditional meals. The package also includes game drives in both Masai Mara and Amboseli National Parks."
+            },
+            {
+                id: 4,
+                name: "Mount Kenya Trek",
+                description: "5-day challenging trek up Mount Kenya with experienced guides and breathtaking views.",
+                price: 1299,
+                duration: "5 days",
+                category: ["adventure"],
+                image: "https://www.graytonexpeditions.com/images/mount-kenya-national-park1.jpg",
+                features: ["4 Nights Mountain Huts", "Experienced Guides", "All Meals Included", "Equipment Provided"],
+                destinations: ["Mount Kenya"],
+                season: "January-March, July-October",
+                difficulty: "Challenging",
+                details: "Challenge yourself with a trek up Mount Kenya, Africa's second-highest peak. Our experienced guides will lead you through diverse ecosystems from rainforest to alpine zones. The package includes all necessary equipment, accommodation in mountain huts, and meals. No prior climbing experience is required, but good physical fitness is recommended."
+            },
+            {
+                id: 5,
+                name: "Northern Frontier Adventure",
+                description: "8-day expedition to Kenya's remote northern regions with unique wildlife and cultures.",
+                price: 2199,
+                duration: "8 days",
+                category: ["safari", "adventure", "cultural"],
+                image: "https://sunworld-safari.com/wp-content/uploads/2023/08/Ashnil-tent.jpg",
+                features: ["7 Nights Accommodation", "Game Drives", "Cultural Visits", "Desert Experience"],
+                destinations: ["Samburu"],
+                season: "June-October",
+                difficulty: "Moderate",
+                details: "Explore Kenya's remote northern frontier with this adventurous safari. You'll discover unique wildlife species not found elsewhere in Kenya and experience authentic cultural encounters with local tribes. The journey takes you through dramatic landscapes from semi-desert to lush riverine forests along the Ewaso Ng'iro River."
+            },
+            {
+                id: 6,
+                name: "Lamu Cultural Retreat",
+                description: "4-day cultural immersion in the historic Swahili town of Lamu with guided tours and relaxation.",
+                price: 999,
+                duration: "4 days",
+                category: ["cultural", "beach"],
+                image: "https://travelaffairs.com/wp-content/uploads/2025/09/Lamu-Cultural.jpg",
+                features: ["3 Nights Boutique Hotel", "Guided Town Tours", "Dhow Sailing", "Swahili Cooking Class"],
+                destinations: ["Lamu Island"],
+                season: "October-March",
+                difficulty: "Easy",
+                details: "Immerse yourself in Swahili culture with this retreat to Lamu Island. You'll stay in a boutique hotel in the heart of the historic old town, explore narrow streets on foot or by donkey, sail on traditional dhows, and learn to cook authentic Swahili dishes. This package offers a perfect blend of cultural immersion and relaxation."
+            },
+            {
+                id: 7,
+                name: "Rift Valley Explorer",
+                description: "6-day journey through Kenya's Great Rift Valley with lakes, flamingos, and geothermal wonders.",
+                price: 1799,
+                duration: "6 days",
+                category: ["safari", "adventure"],
+                image: "https://i0.wp.com/zamaexpeditions.com/wp-content/uploads/2025/09/Great-Rift-Valley-Explorer-Spectacular-view-of-the-Valley-1.jpg?resize=636%2C426&ssl=1",
+                features: ["5 Nights Accommodation", "Lake Nakuru Visit", "Hell's Gate Cycling", "Boat Safari"],
+                destinations: ["Lake Nakuru", "Hell's Gate National Park"],
+                season: "Year-round",
+                difficulty: "Moderate",
+                details: "Explore the geological wonders of Kenya's Great Rift Valley with this unique safari. You'll witness the pink flamingos of Lake Nakuru, cycle through the dramatic gorges of Hell's Gate National Park, and enjoy boat safaris on Lake Naivasha. This package offers a perfect blend of wildlife viewing and active adventure."
+            },
+            {
+                id: 8,
+                name: "Big Five Ultimate Safari",
+                description: "10-day comprehensive safari covering Kenya's top wildlife destinations for the ultimate Big Five experience.",
+                price: 3499,
+                duration: "10 days",
+                category: ["safari", "luxury"],
+                image: "https://www.lakenakurukenya.com/wp-content/uploads/2023/02/Lion-Masai-Mara-Kenya-Big-5-1024x683-1.jpg",
+                features: ["9 Nights Luxury Lodges", "All Meals Included", "Professional Photographer Guide", "Hot Air Balloon Safari"],
+                destinations: ["Masai Mara", "Amboseli", "Tsavo National Park"],
+                season: "Year-round",
+                difficulty: "Easy",
+                details: "Our ultimate Big Five safari takes you to Kenya's most iconic wildlife destinations in style and comfort. You'll stay in luxury lodges with all amenities, enjoy guided game drives with expert naturalists, and experience a breathtaking hot air balloon safari over the Masai Mara. This comprehensive package ensures you'll encounter all of Africa's Big Five animals in their natural habitats."
+            }
+        ];
+
+        const activitiesData = [
+            {
+                id: 1,
+                name: "Game Drives",
+                description: "Experience wildlife up close in open-top vehicles with expert guides.",
+                category: "wildlife",
+                image: "https://www.safari-center.com/wp-content/uploads/2020/10/Gamedrive29-e1480882482651-2.jpg",
+                duration: "3-4 hours",
+                difficulty: "Easy",
+                locations: ["Masai Mara", "Amboseli", "Samburu", "Tsavo National Park"],
+                details: "Game drives are the quintessential African safari experience. Our expert guides will take you in specially designed 4x4 vehicles through Kenya's national parks and reserves in search of wildlife. Early morning and late afternoon drives offer the best wildlife viewing opportunities when animals are most active."
+            },
+            {
+                id: 2,
+                name: "Hot Air Balloon",
+                description: "Float above the savannah at sunrise for breathtaking aerial views of wildlife.",
+                category: "adventure",
+                image: "https://www.4x4selfdrivekenya.com/wp-content/uploads/2020/10/balloon-safaris-kenya.jpg",
+                duration: "1-2 hours",
+                difficulty: "Easy",
+                locations: ["Masai Mara"],
+                details: "Experience the Masai Mara from a unique perspective with a hot air balloon safari. You'll float silently above the savannah as the sun rises, offering unparalleled views of wildlife and landscapes. The flight concludes with a champagne breakfast in the bush, making for a truly memorable experience."
+            },
+            {
+                id: 3,
+                name: "Cultural Tours",
+                description: "Visit local communities and learn about traditional ways of life.",
+                category: "cultural",
+                image: "https://www.leopard-tours.com/wp-content/uploads/2015/10/Tanzania-Cultural-Tours-1-880x500.jpg",
+                duration: "2-3 hours",
+                difficulty: "Easy",
+                locations: ["Masai Mara", "Samburu", "Lamu Island"],
+                details: "Our cultural tours offer authentic interactions with local communities. You'll learn about traditional customs, crafts, and ways of life directly from community members. These experiences are conducted with respect for local cultures and provide meaningful insights into Kenya's diverse ethnic groups."
+            },
+            {
+                id: 4,
+                name: "Beach Relaxation",
+                description: "Unwind on pristine beaches with crystal-clear waters and white sand.",
+                category: "beach",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                duration: "Flexible",
+                difficulty: "Easy",
+                locations: ["Diani Beach", "Lamu Island"],
+                details: "Kenya's coastline offers some of the world's most beautiful beaches. Spend your days relaxing on pristine white sands, swimming in turquoise waters, or simply enjoying the tropical ambiance. Our beach packages include comfortable accommodations with direct beach access and optional water sports activities."
+            },
+            {
+                id: 5,
+                name: "Mountain Trekking",
+                description: "Challenge yourself with hikes through diverse mountain ecosystems.",
+                category: "hiking",
+                image: "https://www.graytonexpeditions.com/images/mount-kenya-national-park1.jpg",
+                duration: "4-8 hours",
+                difficulty: "Moderate to Challenging",
+                locations: ["Mount Kenya"],
+                details: "Kenya's mountains offer spectacular trekking opportunities for all fitness levels. Our guided hikes take you through diverse ecosystems with experienced guides who share their knowledge of the local flora, fauna, and geology. Whether you're looking for a day hike or a multi-day expedition, we have options to suit your interests and abilities."
+            },
+            {
+                id: 6,
+                name: "Snorkeling & Diving",
+                description: "Explore vibrant coral reefs and marine life in the Indian Ocean.",
+                category: "beach",
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                duration: "2-3 hours",
+                difficulty: "Easy to Moderate",
+                locations: ["Diani Beach"],
+                details: "Discover Kenya's underwater world with snorkeling or diving excursions. The coral reefs along the Kenyan coast are home to a diverse array of marine life, including colorful fish, sea turtles, and occasionally dolphins. Our certified instructors provide all necessary equipment and guidance for both beginners and experienced divers."
+            },
+            {
+                id: 7,
+                name: "Bird Watching",
+                description: "Spot hundreds of bird species in Kenya's diverse ecosystems.",
+                category: "wildlife",
+                image: "https://kenya-birding.com/wp-content/uploads/2021/05/lesser-flamingolake-bogoria.jpg",
+                duration: "2-4 hours",
+                difficulty: "Easy",
+                locations: ["Lake Nakuru", "Masai Mara", "Amboseli"],
+                details: "Kenya is a birdwatcher's paradise with over 1,100 recorded species. From the famous flamingos of Lake Nakuru to the raptors of the Maasai Mara, our guided bird watching tours will introduce you to Kenya's incredible avian diversity. Our expert guides will help you spot and identify both common and rare species."
+            },
+            {
+                id: 8,
+                name: "Cycling Safari",
+                description: "Explore national parks on two wheels for a unique perspective.",
+                category: "adventure",
+                image: "https://www.africasafaribookingsadvisor.com/wp-content/uploads/2021/06/9-Days-Kenya-Cycling-Safari-Adventure.jpg",
+                duration: "2-3 hours",
+                difficulty: "Moderate",
+                locations: ["Hell's Gate National Park"],
+                details: "Experience a unique safari perspective with our cycling adventures. Hell's Gate National Park is one of the few parks in Kenya where cycling is permitted. You'll pedal through dramatic landscapes, past wildlife, and through spectacular gorges, all while enjoying the freedom and exercise that comes with cycling."
+            }
+        ];
+
+        const blogData = [
+            {
+                id: 1,
+                title: "When to Witness the Great Migration in Kenya",
+                excerpt: "Learn about the best times and locations to experience one of nature's most spectacular events.",
+                image: "https://www.maasaimarakenyapark.com/wp-content/uploads/2019/12/Wildebeest-Migration-in-Masai-Maraas.jpg",
+                date: "June 15, 2023",
+                category: "Wildlife",
+                readTime: "5 min read",
+                content: "The Great Migration is one of nature's most spectacular events, where over 1.5 million wildebeest, zebra, and gazelle move in a continuous cycle through the Serengeti and Masai Mara ecosystems. In Kenya, the best time to witness this incredible spectacle is typically from July to October, when the herds cross the Mara River into the Masai Mara National Reserve. This period offers dramatic river crossings where crocodiles lie in wait, creating some of the most thrilling wildlife viewing opportunities on the planet. The exact timing can vary each year depending on rainfall patterns, so it's advisable to consult with local experts when planning your trip."
+            },
+            {
+                id: 2,
+                title: "A Guide to Authentic Kenyan Cuisine",
+                excerpt: "Discover the flavors of Kenya with our guide to must-try dishes and dining experiences.",
+                image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                date: "May 28, 2023",
+                category: "Culture",
+                readTime: "7 min read",
+                content: "Kenyan cuisine reflects the country's diverse cultural influences, with dishes that combine African, Arab, Indian, and European elements. Must-try dishes include nyama choma (grilled meat), ugali (a staple maize porridge), sukuma wiki (collard greens), and pilau (spiced rice). Along the coast, Swahili cuisine offers delicious seafood dishes with coconut and spice influences. For an authentic experience, visit local markets or try a traditional meal in a Kenyan home. Many safari lodges also offer opportunities to sample local dishes as part of their dining experiences."
+            },
+            {
+                id: 3,
+                title: "Sustainable Travel in Kenya: How to Make a Difference",
+                excerpt: "Learn how your visit can support conservation efforts and local communities.",
+                image: "https://naicef.com/wp-content/uploads/2025/07/Sustainable-safari-tours-Eco-friendly-safari-Sustainable-tourism-in-Kenya-Best-Sustainable-beach-in-Kenya-best-sustainable-safari-packages-in-Kenya-6-416x280.jpg",
+                date: "April 12, 2023",
+                category: "Sustainability",
+                readTime: "6 min read",
+                content: "Sustainable tourism is crucial for preserving Kenya's incredible natural and cultural heritage. Travelers can make a positive impact by choosing eco-friendly accommodations, supporting community-based tourism initiatives, and respecting wildlife and local customs. Many lodges and tour operators in Kenya are committed to conservation and community development, with initiatives ranging from wildlife protection programs to supporting local schools and healthcare. By traveling responsibly, you can help ensure that Kenya's treasures are preserved for future generations while directly benefiting the communities that call this beautiful country home."
+            },
+            {
+                id: 4,
+                title: "Top 5 Photography Spots in Kenya",
+                excerpt: "Capture stunning images at these picture-perfect locations across the country.",
+                image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                date: "March 22, 2023",
+                category: "Travel Tips",
+                readTime: "4 min read",
+                content: "Kenya offers endless opportunities for stunning photography. Our top five spots include: 1) The Masai Mara during the Great Migration for dramatic wildlife shots; 2) Amboseli National Park for elephant herds with Mount Kilimanjaro in the background; 3) Lake Nakuru for flamingos and rhinos; 4) Diani Beach for turquoise waters and white sand; and 5) The Rift Valley escarpment for breathtaking landscapes. For the best results, bring a telephoto lens for wildlife, a wide-angle for landscapes, and don't forget extra memory cards and batteries. The golden hours around sunrise and sunset offer the most beautiful light for photography."
+            },
+            {
+                id: 5,
+                title: "Family-Friendly Safari: A Complete Guide",
+                excerpt: "Everything you need to know for a memorable and safe safari with children.",
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                date: "February 18, 2023",
+                category: "Family Travel",
+                readTime: "8 min read",
+                content: "A family safari in Kenya can be an unforgettable experience for children and adults alike. When planning your trip, consider destinations with family-friendly accommodations and shorter travel times between locations. Many lodges offer family suites, children's activities, and special meal options. Game drives can be tailored to suit children's attention spans, with breaks for snacks and shorter outings. It's also worth considering malaria-free options or consulting with your doctor about appropriate precautions. Educational elements like visits to conservation projects or cultural interactions can make the experience both fun and enriching for young travelers."
+            },
+            {
+                id: 6,
+                title: "Lamu: Exploring Kenya's Swahili Heritage",
+                excerpt: "Discover the rich history and culture of Kenya's oldest continuously inhabited town.",
+                image: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/78/f1/14.jpg",
+                date: "January 5, 2023",
+                category: "Culture",
+                readTime: "6 min read",
+                content: "Lamu Old Town, a UNESCO World Heritage Site, offers a fascinating glimpse into Swahili culture and history. The town's narrow streets are lined with centuries-old stone buildings featuring intricately carved wooden doors. With no cars on the island, transportation is by foot, donkey, or boat, creating a peaceful atmosphere far removed from modern life. Key attractions include the Lamu Museum, which showcases Swahili history and culture; the Lamu Fort; and the nearby Takwa Ruins. The annual Lamu Cultural Festival celebrates the island's heritage with traditional music, dance, and dhow races. A visit to Lamu is like stepping back in time to a slower, more traditional way of life."
+            }
+        ];
+
+        // DOM Elements
+        const destinationGrid = document.getElementById('destinationGrid');
+        const packageGrid = document.getElementById('packageGrid');
+        const activityGrid = document.getElementById('activityGrid');
+        const blogGrid = document.getElementById('blogGrid');
+        const detailModal = document.getElementById('detailModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalContent = document.getElementById('modalContent');
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial content
+            renderDestinations(destinationsData);
+            renderPackages(packagesData);
+            renderActivities(activitiesData);
+            renderBlogPosts(blogData);
+            
+            // Initialize event listeners
+            initEventListeners();
+            
+            // Initialize animations
+            initAnimations();
+        });
+
+        // Render functions
+        function renderDestinations(destinations) {
+            destinationGrid.innerHTML = '';
+            
+            if (destinations.length === 0) {
+                document.getElementById('destinationNoResults').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('destinationNoResults').style.display = 'none';
+            
+            destinations.forEach(destination => {
+                const card = document.createElement('div');
+                card.className = 'destination-card fade-in';
+                card.setAttribute('data-category', destination.category);
+                
+                card.innerHTML = `
+                    <img src="${destination.image}" alt="${destination.name}" class="destination-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMGUwZTAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5LZW55YSBXaWxkbGlmZTwvdGV4dD48L3N2Zz4='; this.alt='${destination.name}'; this.className='destination-img image-placeholder';">
+                    <div class="destination-info">
+                        <h3>${destination.name}</h3>
+                        <p>${destination.description}</p>
+                        <div class="destination-details">
+                            <p><i class="fas fa-map-marker-alt"></i> ${destination.region}</p>
+                            <p><i class="fas fa-calendar-alt"></i> Best Time: ${destination.bestTime}</p>
+                            <p><i class="fas fa-tag"></i> ${destination.priceRange}</p>
+                        </div>
+                        <button class="btn btn-secondary learn-more-btn" data-type="destination" data-id="${destination.id}">Learn More</button>
+                    </div>
+                `;
+                
+                destinationGrid.appendChild(card);
+            });
+            
+            // Add event listeners to learn more buttons
+            document.querySelectorAll('.destinations .learn-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const type = this.getAttribute('data-type');
+                    showDetails(type, id);
+                });
+            });
+            
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        function renderPackages(packages) {
+            packageGrid.innerHTML = '';
+            
+            if (packages.length === 0) {
+                document.getElementById('packageNoResults').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('packageNoResults').style.display = 'none';
+            
+            packages.forEach(pkg => {
+                const card = document.createElement('div');
+                card.className = 'package-card fade-in';
+                card.setAttribute('data-category', pkg.category.join(' '));
+                
+                card.innerHTML = `
+                    <div class="package-header">
+                        <img src="${pkg.image}" alt="${pkg.name}" class="package-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMGUwZTAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5LZW55YSBTYWZhcmk8L3RleHQ+PC9zdmc+'; this.alt='${pkg.name}'; this.className='package-img image-placeholder';">
+                        <div class="package-price">$${pkg.price}</div>
+                    </div>
+                    <div class="package-body">
+                        <h3>${pkg.name}</h3>
+                        <p>${pkg.description}</p>
+                        <ul class="package-features">
+                            ${pkg.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                        </ul>
+                        <div class="package-meta">
+                            <p><i class="fas fa-clock"></i> ${pkg.duration}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${pkg.destinations.join(', ')}</p>
+                            <p><i class="fas fa-calendar-alt"></i> ${pkg.season}</p>
+                            <p><i class="fas fa-hiking"></i> ${pkg.difficulty}</p>
+                        </div>
+                        <button class="btn learn-more-btn" data-type="package" data-id="${pkg.id}">Learn More</button>
+                    </div>
+                `;
+                
+                packageGrid.appendChild(card);
+            });
+            
+            // Add event listeners to learn more buttons
+            document.querySelectorAll('.packages .learn-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const type = this.getAttribute('data-type');
+                    showDetails(type, id);
+                });
+            });
+            
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        function renderActivities(activities) {
+            activityGrid.innerHTML = '';
+            
+            if (activities.length === 0) {
+                document.getElementById('activityNoResults').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('activityNoResults').style.display = 'none';
+            
+            activities.forEach(activity => {
+                const card = document.createElement('div');
+                card.className = 'activity-card fade-in';
+                card.setAttribute('data-category', activity.category);
+                
+                card.innerHTML = `
+                    <img src="${activity.image}" alt="${activity.name}" class="activity-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMGUwZTAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5LZW55YSBBY3Rpdml0eTwvdGV4dD48L3N2Zz4='; this.alt='${activity.name}'; this.className='activity-img image-placeholder';">
+                    <div class="activity-overlay">
+                        <h3 class="activity-name">${activity.name}</h3>
+                    </div>
+                    <div class="activity-details" style="display: none;">
+                        <p>${activity.description}</p>
+                        <p><i class="fas fa-clock"></i> ${activity.duration}</p>
+                        <p><i class="fas fa-hiking"></i> ${activity.difficulty}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> ${activity.locations.join(', ')}</p>
+                    </div>
+                `;
+                
+                // Add click event to show details
+                card.addEventListener('click', function() {
+                    const id = activity.id;
+                    const type = 'activity';
+                    showDetails(type, id);
+                });
+                
+                activityGrid.appendChild(card);
+            });
+            
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        function renderBlogPosts(posts) {
+            blogGrid.innerHTML = '';
+            
+            if (posts.length === 0) {
+                document.getElementById('blogNoResults').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('blogNoResults').style.display = 'none';
+            
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'blog-card fade-in';
+                
+                card.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="blog-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMGUwZTAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5LZW55YSBUcmF2ZWwgQmxvZzwvdGV4dD48L3N2Zz4='; this.alt='${post.title}'; this.className='blog-img image-placeholder';">
+                    <div class="blog-body">
+                        <span class="blog-date">${post.date} • ${post.category} • ${post.readTime}</span>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <button class="blog-link learn-more-btn" data-type="blog" data-id="${post.id}">Read More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                `;
+                
+                blogGrid.appendChild(card);
+            });
+            
+            // Add event listeners to learn more buttons
+            document.querySelectorAll('.blog .learn-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const type = this.getAttribute('data-type');
+                    showDetails(type, id);
+                });
+            });
+            
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Show details in modal
+        function showDetails(type, id) {
+            let item;
+            
+            switch(type) {
+                case 'destination':
+                    item = destinationsData.find(d => d.id === id);
+                    break;
+                case 'package':
+                    item = packagesData.find(p => p.id === id);
+                    break;
+                case 'activity':
+                    item = activitiesData.find(a => a.id === id);
+                    break;
+                case 'blog':
+                    item = blogData.find(b => b.id === id);
+                    break;
+            }
+            
+            if (!item) return;
+            
+            modalTitle.textContent = item.name || item.title;
+            modalImage.src = item.image;
+            modalImage.alt = item.name || item.title;
+            
+            let contentHTML = '';
+            
+            if (type === 'destination') {
+                contentHTML = `
+                    <p><strong>Region:</strong> ${item.region}</p>
+                    <p><strong>Best Time to Visit:</strong> ${item.bestTime}</p>
+                    <p><strong>Price Range:</strong> ${item.priceRange}</p>
+                    <p>${item.details}</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#contact" class="btn" onclick="closeDetailModal()">Inquire About This Destination</a>
+                    </div>
+                `;
+            } else if (type === 'package') {
+                contentHTML = `
+                    <p><strong>Duration:</strong> ${item.duration}</p>
+                    <p><strong>Destinations:</strong> ${item.destinations.join(', ')}</p>
+                    <p><strong>Best Season:</strong> ${item.season}</p>
+                    <p><strong>Difficulty:</strong> ${item.difficulty}</p>
+                    <p><strong>Price:</strong> $${item.price}</p>
+                    <h3 style="margin-top: 20px;">Package Includes:</h3>
+                    <ul>
+                        ${item.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <p>${item.details}</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#contact" class="btn" onclick="closeDetailModal()">Book This Package</a>
+                    </div>
+                `;
+            } else if (type === 'activity') {
+                contentHTML = `
+                    <p><strong>Duration:</strong> ${item.duration}</p>
+                    <p><strong>Difficulty:</strong> ${item.difficulty}</p>
+                    <p><strong>Available at:</strong> ${item.locations.join(', ')}</p>
+                    <p>${item.details}</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#contact" class="btn" onclick="closeDetailModal()">Inquire About This Activity</a>
+                    </div>
+                `;
+            } else if (type === 'blog') {
+                contentHTML = `
+                    <p><strong>Published:</strong> ${item.date}</p>
+                    <p><strong>Category:</strong> ${item.category}</p>
+                    <p><strong>Reading Time:</strong> ${item.readTime}</p>
+                    <p>${item.content}</p>
+                `;
+            }
+            
+            modalContent.innerHTML = contentHTML;
+            detailModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal function
+        function closeDetailModal() {
+            detailModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter functions
+        function filterDestinations(category) {
+            if (category === 'all') {
+                renderDestinations(destinationsData);
+            } else {
+                const filtered = destinationsData.filter(dest => dest.category === category);
+                renderDestinations(filtered);
+            }
+        }
+
+        function filterPackages(category) {
+            if (category === 'all') {
+                renderPackages(packagesData);
+            } else {
+                const filtered = packagesData.filter(pkg => pkg.category.includes(category));
+                renderPackages(filtered);
+            }
+        }
+
+        function filterActivities(category) {
+            if (category === 'all') {
+                renderActivities(activitiesData);
+            } else {
+                const filtered = activitiesData.filter(activity => activity.category === category);
+                renderActivities(filtered);
+            }
+        }
+
+        // Initialize event listeners
+        function initEventListeners() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', closeDetailModal);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === detailModal) {
+                    closeDetailModal();
+                }
+            });
+
+            // Hero slider
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+
+            // Testimonial slider
+            let currentTestimonial = 0;
+            const testimonials = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            function showTestimonial(n) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                currentTestimonial = (n + testimonials.length) % testimonials.length;
+                testimonials[currentTestimonial].classList.add('active');
+                dots[currentTestimonial].classList.add('active');
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                });
+            });
+            
+            setInterval(() => {
+                showTestimonial(currentTestimonial + 1);
+            }, 6000);
+
+            // Destination filter buttons
+            document.querySelectorAll('.destinations .filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.destinations .filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    filterDestinations(filter);
+                });
+            });
+
+            // Package tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    filterPackages(filter);
+                });
+            });
+
+            // Activity filter buttons
+            document.querySelectorAll('.activities .filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.activities .filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    filterActivities(filter);
+                });
+            });
+
+            // Search button
+            document.getElementById('searchBtn').addEventListener('click', function() {
+                const destination = document.getElementById('destination').value;
+                const checkIn = document.getElementById('check-in').value;
+                const checkOut = document.getElementById('check-out').value;
+                const guests = document.getElementById('guests').value;
+                
+                // In a real application, this would send a request to a server
+                // For now, we'll just show an alert
+                alert(`Searching for ${guests} guests in ${destination || 'any destination'} from ${checkIn || 'any date'} to ${checkOut || 'any date'}`);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Initialize animations
+        function initAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkScroll() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('load', checkScroll);
+        }
+    </script>
+</body>
+</html>
