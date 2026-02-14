@@ -188,7 +188,7 @@ class MyFooter extends HTMLElement
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 SailWeb7. All Rights Reserved.</p>
+                <p>&copy; 2026 SailWeb7. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -282,4 +282,5 @@ class MyFooter extends HTMLElement
         `
     }
 }
+
 customElements.define('my-footer', MyFooter)
