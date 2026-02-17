@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
+    (index):46 The Content Security Policy directive 'frame-ancestors' is ignored when delivered via a <meta> element.
+(index):1394 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
+    at (index):1394:51
+site.webmanifest:1  Failed to load resource: the server responded with a status of 404 ()
+(index):1 Manifest fetch from https://sailweb7.co.ke/site.webmanifest failed, code 404
+site.webmanifest:1  Failed to load resource: the server responded with a status of 404 ()
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +41,7 @@
     <meta name="twitter:site" content="@SailWeb7">
     
     <!-- Security Headers (Adjusted for sailweb7.co.ke) -->
+    <!-- Note: frame-ancestors is not supported in meta tags, removed -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https:;
         script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
@@ -42,7 +52,6 @@
         object-src 'none';
         base-uri 'self';
         form-action 'self';
-        frame-ancestors 'none';
     ">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
@@ -95,7 +104,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- Manifest file commented out to avoid 404 error – create or remove -->
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    
     
     
     <style>
@@ -1452,6 +1463,7 @@
 </body>
 
 </html>
+
 
 
 
