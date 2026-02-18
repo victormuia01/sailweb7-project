@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +35,11 @@
     <!-- Note: frame-ancestors is not supported in meta tags, removed -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https:;
-        script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';
+        script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://vercel.live 'unsafe-inline' 'unsafe-eval';
         style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com 'unsafe-inline';
         img-src 'self' https://images.unsplash.com data:;
         font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
-        connect-src 'self';
+        connect-src 'self' https://vercel.live;
         object-src 'none';
         base-uri 'self';
         form-action 'self';
@@ -99,11 +97,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <!-- Manifest file commented out to avoid 404 error – create or remove -->
     <!-- <link rel="manifest" href="/site.webmanifest"> -->
-    
 </head>
 <body>
-    <h1>Welcome to Your Web App</h1>
-    <p>This is a simple web application.</p>
-    <!-- additional content -->
+    <!-- ========================================= -->
+    <!--   YOUR EXISTING BODY CONTENT GOES HERE    -->
+    <!--   (e.g., header, hero, services, footer)  -->
+    <!-- ========================================= -->
+    <!-- Example placeholder structure (replace with your own): -->
+    <!--
+    <header>...</header>
+    <main>...</main>
+    <footer>...</footer>
+    -->
+    <p style="text-align: center; margin-top: 2em;">SailWeb7 – Your website content will appear here.</p>
 </body>
 </html>
